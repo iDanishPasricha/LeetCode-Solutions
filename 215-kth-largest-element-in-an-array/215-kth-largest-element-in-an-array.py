@@ -2,7 +2,7 @@ import heapq
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         maxheap =[]
-        
+        #We use heapq class to implement Heaps in Python. By default Min Heap is implemented by this class. But we multiply each value by -1 so that we can use it as MaxHeap.
         for x in nums:
             maxheap.append(-1*x);
             
@@ -12,6 +12,5 @@ class Solution:
         temp = 0;
         while temp!=k:
             a = heapq.heappop(maxheap)
-            ans.append(a)
             temp+=1;
-        return -ans[-1]
+        return -a
