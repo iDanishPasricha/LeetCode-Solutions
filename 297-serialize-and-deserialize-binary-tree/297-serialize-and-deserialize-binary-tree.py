@@ -18,12 +18,8 @@ class Codec:
             dfs(root.left);
             dfs(root.right);
         dfs(root);
+        print(",".join(ans))
         return ",".join(ans)
-                
-        
-        
-        
-        
 
     def deserialize(self, data):
         nums = data.split(",");
@@ -34,11 +30,12 @@ class Codec:
                 self.i+=1;
                 return None
 
-            node = TreeNode(int(nums[self.i]))
-            self.i+=1;
-            node.left = dfs();
-            node.right = dfs();
-            return node
+            if nums[self.i]!="N":
+                node = TreeNode(int(nums[self.i]))
+                self.i+=1;
+                node.left = dfs();
+                node.right = dfs();
+                return node
         return dfs()
         
 
