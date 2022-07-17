@@ -13,10 +13,10 @@ class Codec:
             if root is None:
                 ans.append("N");
                 return
-            
-            ans.append(str(root.val))
-            dfs(root.left);
-            dfs(root.right);
+            if root is not None:
+                ans.append(str(root.val))
+                dfs(root.left);
+                dfs(root.right);
         dfs(root);
         print(",".join(ans))
         return ",".join(ans)
