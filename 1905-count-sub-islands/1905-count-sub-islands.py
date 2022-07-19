@@ -6,7 +6,7 @@ class Solution:
         def dfs(grid,i,j):
             if i<0 or i>=m or j<0 or j>=n or grid[i][j]!=1:return
             
-            grid[i][j]=2;
+            grid[i][j]=0;
             dfs(grid,i+1,j);
             dfs(grid,i,j+1);
             dfs(grid,i-1,j);
@@ -18,7 +18,7 @@ class Solution:
         ans=[];
         for i in range(m):
             for j in range(n):
-                if grid2[i][j]==1 and grid1[i][j]==0:
+                if grid1[i][j]==0 and grid2[i][j]==1:
                     dfs(grid2,i,j);
                 
 
