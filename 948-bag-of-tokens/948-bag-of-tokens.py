@@ -10,15 +10,15 @@ class Solution:
                 power-=tokens[i]
                 score+=1;
                 i+=1
-            else:
-                if power + tokens[j]>=tokens[i] and i!=j and score!=0:
-                    power+=tokens[j]
-                    score-=1;
-                    j-=1
-                else:
-                    break
+            
+            elif power + tokens[j]>=tokens[i] and i!=j and score!=0: #hun tu udhar mangana hai bc same e bande to udhar thode mangega ohnu nu chukaan lyi (i!=j) paise dene aseem nu te udhaar v bc aseem hora to udhar ohna to tagde bande to mang na single etc
+                power+=tokens[j]
+                score-=1;
+                j-=1
+            else:break
         return score
-    '''
+    
+'''
 Sort the tokens, l = 0 and r = length - 1
 If there is enough power to flip the token[l], then do it and get 1 point.
 if there is not enough power to flip token[l], then use 1 point to get the token[r] power.
