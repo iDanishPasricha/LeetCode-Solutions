@@ -1,11 +1,13 @@
 class Solution:
-    def subArrayRanges(self, A):
-        res = 0
-        n = len(A)
-        for i in range(n):
-            l,r = A[i],A[i]
-            for j in range(i, n):
-                l = min(l, A[j])
-                r = max(r, A[j])
-                res += r - l
-        return res
+    def subArrayRanges(self, nums: List[int]) -> int:
+        ans= 0 
+        for i in range(len(nums)):
+            left = nums[i]
+            right = nums[i]
+            for j in range(i,len(nums)):
+                left = min(left,nums[j])
+                right = max(right,nums[j])
+                ans+=(right-left)
+        return ans
+                
+        
