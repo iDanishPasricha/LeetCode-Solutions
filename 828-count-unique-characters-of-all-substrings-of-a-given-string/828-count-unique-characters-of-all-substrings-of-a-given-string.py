@@ -1,19 +1,29 @@
 class Solution:
     def uniqueLetterString(self, S: str) -> int:
-        d = {i: [-1, -1] for i in ascii_uppercase}
+        d = {S[i]: [-1, -1] for i in range(len(S))}
 
         ans = 0
+        
+        
         for i in range(len(S)):
             
-            k, j = d[S[i]]
-            ans += (i - j) * (j - k)
-            d[S[i]] = [j, i]
+            a, b = d[S[i]]
+            
+    
+            ans += (b - a) * (i - b) 
+            
+        
+            
+            d[S[i]] = [b, i]
             
             
+            
+
             
         for i in d:
-            k, j = d[i]
-            ans += (len(S) - j) * (j - k)
+            a, b = d[i]
+
+            ans += (b - a) * (len(S) - b)  
             
             
             
