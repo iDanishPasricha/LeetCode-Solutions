@@ -1,32 +1,17 @@
 class Solution:
-    def uniqueLetterString(self, S: str) -> int:
-        d = {S[i]: [-1, -1] for i in range(len(S))}
-
+    def uniqueLetterString(self, s: str) -> int:
+        d={}
+        for i in s:
+            d[i]=[-1,-1]
         ans = 0
-        
-        
-        for i in range(len(S)):
+        for i in range(len(s)):
+            a,b = d[s[i]]
             
-            a, b = d[S[i]]
+            ans+=(b-a)*(i-b)
             
-    
-            ans += (b - a) * (i - b) 
-            
-        
-            
-            d[S[i]] = [b, i]
-            
-            
-            
+            d[s[i]] = [b,i]
 
-            
         for i in d:
-            a, b = d[i]
-
-            ans += (b - a) * (len(S) - b)  
-            
-            
-            
-        return ans % (10**9 + 7)
-        
-        
+            a,b  = d[i]
+            ans+=(b-a)*(len(s)-b)
+        return ans
