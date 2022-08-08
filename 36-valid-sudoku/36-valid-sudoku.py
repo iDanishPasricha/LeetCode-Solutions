@@ -3,7 +3,7 @@ class Solution:
         rows=defaultdict(set);
         cols=defaultdict(set);
         boxes=defaultdict(set);
-        print(rows)
+        
         
         for i in range(9):   
             for j in range(9):
@@ -15,8 +15,6 @@ class Solution:
                         rows[i].add(b[i][j]);
                         cols[j].add(b[i][j]);
                         boxes[(i//3,j//3)].add(b[i][j]);
-            print(rows)
-                        
         return True
                         
                         
