@@ -1,15 +1,13 @@
 class Solution:
     def maxSubarraySumCircular(self, nums: List[int]) -> int:
-        def kadane(a):
+        def kadane(nums):
             
-            max_so_far =a[0]
-            curr_max = a[0]
+            dp=[-math.inf for _ in range(len(nums))]
 
-            for i in range(1,len(a)):
-                curr_max = max(a[i], curr_max + a[i])
-                max_so_far = max(max_so_far,curr_max)
-
-            return max_so_far
+            dp[0]=nums[0]
+            for i in range(1,len(nums)):
+                dp[i] = max(nums[i],dp[i-1]+nums[i])
+            return max(dp)
         
         
         n1=nums;
