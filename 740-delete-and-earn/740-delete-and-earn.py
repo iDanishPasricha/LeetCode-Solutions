@@ -10,7 +10,7 @@ class Solution:
         dp[1] = d[1]
         for i in range(2,len(dp)):
             dp[i] = max(dp[i-1],d[i]+dp[i-2])
-        return dp[max_num]
+        return dp[-1]
     
         
 
