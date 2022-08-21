@@ -14,7 +14,7 @@ class Solution:
         left_max=0;
         for i in range(0,right_max_index):
             left_max=max(left_max,height[i]);
-            water=left_max-height[i];
+            water = left_max-height[i];
             total_water+=water;
             
             
@@ -22,7 +22,7 @@ class Solution:
         height=height[right_max_index:][::-1];
         for i in range(len(height)):
             left_max=max(left_max,height[i]);
-            water=min(left_max,right_max)-height[i];
+            water=left_max-height[i];
             total_water+=water;
             
         return total_water
