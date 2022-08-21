@@ -9,8 +9,7 @@ class Solution:
         heapq.heapify(maxheap) #convert it to heap
         print(maxheap)
         ans=[];
-        temp = 0;
-        while temp!=k:
+        while k>0:
             a = heapq.heappop(maxheap)
-            temp+=1;
+            k-=1;
         return -a
