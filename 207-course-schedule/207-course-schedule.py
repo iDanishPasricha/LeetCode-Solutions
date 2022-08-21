@@ -10,8 +10,8 @@ class Solution:
             if premap[crs]==[]: return True
             
             visited.add(crs)
-            for neighbour in premap[crs]:
-                if not dfs(neighbour): return False
+            for prereqs in premap[crs]:
+                if not dfs(prereqs): return False
 
             visited.remove(crs)
             premap[crs] = []
