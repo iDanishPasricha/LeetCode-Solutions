@@ -18,4 +18,5 @@ class Solution:
             for j in range(n):
                 if dfs(i,j,0): return True
         return False
+    #O(N*M*4^N)  DFS-->4^N
         
