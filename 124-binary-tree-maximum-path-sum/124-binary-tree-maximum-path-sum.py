@@ -14,15 +14,20 @@ class Solution:
             ls = func(root.left);
             rs = func(root.right);
 
-
-            temp = max((max(ls,rs)+root.val),root.val)
-            curr_ans = max(temp,root.val+ls+rs)
+            
+            temp = max(root.val + (max(ls,rs)),root.val) # max(case2,case3)
+            curr_ans = max(temp,root.val+ls+rs) #max(temp,case1)
             ans = max(curr_ans,ans)
 
-            return temp
+            return temp  # we are returning temp because in case 2 either we will pass through LS or RS if we return ans and suppose case 1 is maximum i.e (RD+LS+RS) is stored in ans variable ,then whole tree will be included and whole tree will be returned
         
         func(root);
         return ans
+    
+    #case 1:- rootdata>0 , LS>0 , RS>0 --> maxsum = RD+LS+RS
+    #case 2:- (LS<0 , RS>0) or (LS>0 , RS<0) --> maxsum = RD + max(LS,RS)
+    #case 3:- LS<0 and RS<0 --> maxsum = RD
+    
         
         
                 
