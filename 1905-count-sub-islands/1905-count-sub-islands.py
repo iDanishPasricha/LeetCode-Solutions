@@ -14,13 +14,13 @@ class Solution:
             
 
         
-  
+        #First check which islands are not there on grid 1 but there on grid 2 
         ans=[];
         for i in range(m):
             for j in range(n):
                 if grid1[i][j]==0 and grid2[i][j]==1:
                     dfs(grid2,i,j);
-                
+        # mask them and then just count the total islands on grid 2                
 
         number_of_islands=0;
         for i in range(m):
