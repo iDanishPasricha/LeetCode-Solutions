@@ -11,6 +11,12 @@ class Solution:
                     q.append(i);
         return all(rooms_visited)
     
+    '''
+    Time Complexity: O(N + E), where N is the number of rooms, and E is the total number of keys.
+
+Space Complexity: O(N) in additional space complexity, to store q and rooms_visited.
+'''
+    
         
         
         
