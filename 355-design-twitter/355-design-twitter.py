@@ -19,7 +19,7 @@ class Twitter:
         
         self.followmap[userId].add(userId)
         for followeeId in self.followmap[userId]:  #iterate through every followee this user follows
-            if followeeId in self.tweetmap:
+            if followeeId in self.tweetmap:  #if this person has atleast one tweet
                 
                 index = len(self.tweetmap[followeeId])-1  #get the tweets and index will represent most recent tweet which will be [count,tweetid]
                 count,tweetId = self.tweetmap[followeeId][index]
