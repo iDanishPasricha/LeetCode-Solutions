@@ -1,5 +1,8 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
+    # take example -> [4,5,8,1,2]
+    # L = [1,4,20,20,160]
+    # R = [80,16,16,2,1]
         length = len(nums)
         L, R, answer = [0]*length, [0]*length, [0]*length
         L[0] = 1
