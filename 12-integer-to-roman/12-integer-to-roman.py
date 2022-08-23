@@ -16,11 +16,18 @@ class Solution:
 '''
 num = 1994
 and explain
-'''
         
+Time complexity : O(1).
+
+As there is a finite set of roman numerals, there is a hard upper limit on how many times the loop can iterate. This upper limit is 15 times, and it occurs for the number 3888. Therefore, we say the time complexity is constant, i.e. O(1).
+
+Space complexity :O(1).
+
+The amount of memory used does not change with the size of the input integer, and is therefore constant.
+
+
         
-        
-'''
+ANOTHER APPRAOCH
         d = {1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C', 90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'}
         ans = ''
         for i in d:
