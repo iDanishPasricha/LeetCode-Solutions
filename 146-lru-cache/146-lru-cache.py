@@ -12,17 +12,18 @@ class LRUCache:
         self.hashmap = {}  #map key to node
         self.LRU = Node(0,0)
         self.MRU = Node(0,0) #MRU = most recently used
-        self.LRU.next = self.MRU
+        self.LRU.next = self.MRU    # initially connected LRU --> MRU
+                                    #                     LRU <--MRU 
         self.MRU.prev = self.LRU
         
-    def remove(self,node):
-        prev = node.prev
+    def remove(self,node):  # remove node from the list
+        prev = node.prev   # these are the 2 helper functions 
         nxt  = node.next
         
         prev.next = nxt
         nxt.prev = prev
         
-    def insert(self,node):
+    def insert(self,node): # insert node at right just before MRU
         prev = self.MRU.prev
         nxt  = self.MRU
         
@@ -30,7 +31,7 @@ class LRUCache:
         node.prev,node.next = prev,nxt
         
 
-    def get(self, key: int) -> int:
+    def get(self, key: int) -> int:   # if key exists in hashmap return its value but first make it MRU
         if key in self.hashmap:
             self.remove(self.hashmap[key])
             self.insert(self.hashmap[key])
@@ -39,7 +40,7 @@ class LRUCache:
         return -1
         
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key: int, value: int) -> None:  # if already same key in present remove it and make a new Node pair of new key and value and put it in hashmap 
         if key in self.hashmap:
             self.remove(self.hashmap[key])
         
