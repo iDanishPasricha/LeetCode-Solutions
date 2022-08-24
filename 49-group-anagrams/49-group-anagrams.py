@@ -1,12 +1,17 @@
 class Solution:
     def groupAnagrams(self,strs):
-        ans = collections.defaultdict(list)
+        d = {}
+        
         for s in strs:
-            count = [0] * 26 #character count 
+            character_array = [0] * 26 #character count 
+            
             for char in s:
-                count[ord(char) - ord('a')] += 1
-            ans[tuple(count)].append(s)
-        return ans.values()
+                character_array[ord(char) - ord('a')] += 1
+            if tuple(character_array) not in d:
+                d[tuple(character_array)] = [s]
+            else:
+                d[tuple(character_array)].append(s)
+        return d.values()
         
 '''
 Two strings are anagrams if and only if their character counts (respective number of occurrences of each character) are the same.
