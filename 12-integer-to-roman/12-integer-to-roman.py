@@ -7,7 +7,7 @@ class Solution:
         roman_digits = []
         for value, symbol in digits:
             if num == 0: break # We don't want to continue looping if we're done.
-            count = num//value
+            count = num//value # how many times which we have to use a specific symbol
             num = num%value
             
             roman_digits.append(symbol * count) # Append "count" copies of "symbol" to roman_digits.
@@ -33,7 +33,6 @@ ANOTHER APPRAOCH
         for i in d:
             while num >= i:
                 ans += d[i]
-                print(ans)
                 num -= i
         return ans
 '''
