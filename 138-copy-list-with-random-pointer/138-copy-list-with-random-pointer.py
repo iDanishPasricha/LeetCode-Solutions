@@ -17,12 +17,15 @@ class Solution:
             curr = curr.next
         
         curr = head
-        while curr:
+        while curr:  #in the second pass we will assign next and randon to these copy nodes
             copyNode = currToCopy[curr]
-            copyNode.next = currToCopy[curr.next]
+            copyNode.next = currToCopy[curr.next] #whatever will be original node's next will also be copy nodes' next
             copyNode.random = currToCopy[curr.random]
             
             curr = curr.next
         
         return currToCopy[head]
+    
+    #O(n)
+    #O(n)
         
