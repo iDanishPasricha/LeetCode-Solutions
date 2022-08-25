@@ -9,7 +9,7 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        currToCopy = {None:None} #this will map curr node to its copy
+        currToCopy = {None:None} #this will map curr node to its copyNode
         curr = head     #We will do this question in 2 pass 
         while curr:     # First we will make a copy of each original node and then map original nodes to their copy nodes
             copyNode = Node(curr.val)
