@@ -9,13 +9,31 @@ class Solution:
         curr = head.next
         prev = head
    
-        while curr:
-            if curr.val==prev.val:
+        while curr:       
+            if curr.val==prev.val:    #condition 1
                 prev.next =  curr.next
                 curr = curr.next
-            else:
+            else:    #condition 2
                 curr = curr.next
                 prev = prev.next
         return head
+    '''
+    1->1->2->3->3   # now condition 1
+    P  C
+    
+    1->2->3->3      # now condition 2
+    P  C
+    
+    1->2->3->3      # now condition 2
+       P  C
+       
+    1->2->3->3      # now condition 1
+          P  C
+    
+    1->2->3->null
+          P   C
+    
+    '''
+    
                 
         
