@@ -5,7 +5,8 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next: return head
+        if not head or head.next==None: return head
+        
         rest = self.reverseList(head.next)
         
         start = head
@@ -13,3 +14,13 @@ class Solution:
         start.next = None
         
         return rest
+'''
+1->2->3->4->5  
+suppose after recursion the scenario is
+
+1->(---) where --- is reversed part i.e 5->4->3->2
+S->(---)
+so we need to do 
+head.next.next = start 
+and then ending None
+'''
