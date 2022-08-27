@@ -5,6 +5,17 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        curr = head
+        while curr:
+            saved = curr.next
+            curr.next = prev
+            prev,curr = curr,saved
+        return prev
+        
+        
+        
+'''
         if not head or head.next==None: return head
         
         rest = self.reverseList(head.next)
@@ -14,7 +25,7 @@ class Solution:
         start.next = None
         
         return rest
-'''
+
 1->2->3->4->5  
 suppose after recursion the scenario is
 
