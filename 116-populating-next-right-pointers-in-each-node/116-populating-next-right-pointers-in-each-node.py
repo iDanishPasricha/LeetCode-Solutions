@@ -10,26 +10,28 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        if not root: return root
+        if not root or root.next: return root
         else:
-            q=[];
+            q = []
             q.append(root)
-            tail = root
-            while(q):
-                curr = q.pop(0);
+            tail = q[0]
+            while q:
+                curr = q.pop(0)
                 if curr.left:
-                    q.append(curr.left);
+                    q.append(curr.left)
                 if curr.right:
-                    q.append(curr.right);
-                
+                    q.append(curr.right)
                 if curr == tail:
-                    curr.next=None
+                    curr.next = None
                     if len(q)>0:
-                        tail = q[-1];
+                        tail = q[-1]
                     else:
                         tail = None
                 else:
                     curr.next = q[0]
             return root
+                    
+                    
+        
                 
         
