@@ -11,6 +11,13 @@ class Solution:
                 visited.add(i)
             d[i]-=1
         return ''.join(stack)
+    '''
+    3 Steps:-
+    1. Stack is not empty
+    2. lexicographical order maintained (stack[-1]>i)
+    3. check if this not the Last occurence of this character d[stack[-1]]>0
+    
+    '''
                 
     
     
