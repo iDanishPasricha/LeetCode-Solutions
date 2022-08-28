@@ -10,5 +10,5 @@ class Solution:
     
     
     
-    #ya to previous sum + cuurent element badha hai ya khaali current element agar khaali current element choose kiya to yeh indicate hota hai ki us element se sub_array start kro like we choose 4 from -2+4 and  4  so subarray ka index 4 se start [ 4, -1 , 2 ,1]
+    #either previous sum + current element is bigger or just current element if we choose current element then it indicates that we should start out subarray from that index like we choose 4 from -2+4 and  4  so subarray starting number 4 se start [ 4, -1 , 2 ,1]
  #Kadane's algorithm   
