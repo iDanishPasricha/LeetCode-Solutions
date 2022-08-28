@@ -21,7 +21,7 @@ class Twitter:
         for followeeId in self.followmap[userId]:  #iterate through every followee this user follows
             if followeeId in self.tweetmap:  #if this person has atleast one tweet
                 
-                index = len(self.tweetmap[followeeId])-1  #get the tweets and index will represent most recent tweet which will be [count,tweetid]
+                index = len(self.tweetmap[followeeId])-1  #get the tweets and index will represent most recent tweet which will be in form = [count,tweetid] where count == timing of the most recent tweet
                 count,tweetId = self.tweetmap[followeeId][index]
                 minheap.append([count,tweetId,followeeId,index-1])  #--> beacuse we have to get the same person's next most recent tweet (index-1)
         heapq.heapify(minheap)
