@@ -5,14 +5,14 @@ class Solution:
             return "0"
 
         stack = []
-        
-        for num in nums:
+        # take example :- "1432219"
+        for i in nums:
             # k--> no of deletion
             # len(nums)-k --> len of our answer --> len of stack at last
-            while stack and stack[-1]>num and k>0:
+            while stack and stack[-1]>i and k>0:
                 stack.pop()
                 k-=1
-            stack.append(num)
+            stack.append(i)
 
         # a case like [112] k = 1    no deletion will happen because there is no valley
         # so we pop k elements from last
