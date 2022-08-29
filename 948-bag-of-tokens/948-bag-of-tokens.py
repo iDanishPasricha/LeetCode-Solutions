@@ -11,10 +11,11 @@ class Solution:
                 score+=1;
                 i+=1
             
-            elif power + tokens[j]>=tokens[i] and i!=j and score!=0: #hun tu udhar mangana hai bc same e bande to udhar thode mangega ohnu nu chukaan lyi (i!=j) paise dene aseem nu te udhaar v bc aseem hora to udhar ohna to tagde bande to mang na single etc
+            elif power + tokens[j]>=tokens[i] and i!=j and score : #hun tu udhar mangana hai bc same e bande to udhar thode mangega ohnu nu chukaan lyi (i!=j) and  also  accocrding to condition If your current score is at least 1
                 power+=tokens[j]
                 score-=1;
                 j-=1
+                
             else:break
         return score
     
