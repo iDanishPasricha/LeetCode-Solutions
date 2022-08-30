@@ -8,7 +8,7 @@ class Solution:
         
         for i in range(len(searchWord)):
             c = searchWord[i]
-            
+                            #ex:- c = o and product[l] = leetc  (no o) or c = o and product[l][i] = f
             while l<=r and (len(products[l])<=i or products[l][i]!=c):
                 l+=1
             while l<=r and (len(products[r])<=i or products[r][i]!=c):
