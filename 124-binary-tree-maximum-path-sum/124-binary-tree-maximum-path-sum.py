@@ -8,6 +8,10 @@ import math
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         ans = [root.val]
+        
+        #remember if we are starting at a node we can only split once because if we violate this condition them it will no longer be a path
+        
+        
         #return sum with considering no split allowed 
         def dfs(root):
             if not root: return 0
