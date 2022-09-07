@@ -7,31 +7,30 @@
 import math
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        ans = float("-inf")
-        def func(root):
-            nonlocal ans
-            if root == None: return 0
-            ls = func(root.left);
-            rs = func(root.right);
-
-            case1 = root.val
-            case2 = root.val + max(ls,rs)
-            case3 = root.val + ls + rs
+        ans = [root.val]
+        #return sum with considering no split allowed 
+        def dfs(root):
+            if not root: return 0
             
-            curr_ans = max(case1,case2,case3)
-            ans      = max(curr_ans,ans)
+            leftMax  = dfs(root.left)
+            rightMax = dfs(root.right)
             
-            return max(case1,case2)
+            leftMax  = max(leftMax,0)  #handling negative cases if leftmax is -ve then wont take it
+            rightMax = max(rightMax,0) #handling negative cases if rigtmax is -ve then wont take it
+            
+            #compute maxSum WITH split (split allowed we can go in both directions left and right from root)
+            
+            ans[0] = max(ans[0] , leftMax + rightMax + root.val)
+            
+            return root.val + max(leftMax,rightMax)
+            
+            
         '''
-            temp = max(root.val + (max(ls,rs)),root.val) # max(case2,case3)
-            curr_ans = max(temp,root.val+ls+rs) #max(temp,case1)
-            ans = max(curr_ans,ans)
-    
-
-            return temp  # we are returning temp because in case 2 either we will pass through LS or RS if we return ans and suppose case 1 is maximum i.e (RD+LS+RS) is stored in ans variable ,then whole tree will be included and whole tree will be returned
+A node can only appear in the sequence at most once. 
+we are returning max(case1,case2) because in case 2 either we will pass through LS or RS if we return ans and suppose case 1 is maximum i.e (RD+LS+RS) is stored in ans variable ,then whole tree will be included and whole tree will be returned
         '''
-        func(root);
-        return ans
+        dfs(root);
+        return ans[0]
     
     #case 1:- rootdata>0 , LS>0 , RS>0 --> maxsum = RD+LS+RS
     #case 2:- (LS<0 , RS>0) or (LS>0 , RS<0) --> maxsum = RD + max(LS,RS)
