@@ -1,13 +1,7 @@
 from collections import defaultdict
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
-        """
-        :type beginWord: str
-        :type endWord: str
-        :type wordList: List[str]
-        :rtype: int
-        """
-
+        
         if endWord not in wordList or not endWord or not beginWord or not wordList:
             return 0
 
@@ -16,15 +10,14 @@ class Solution(object):
 
         # Dictionary to hold combination of words that can be formed,
         # from any given word. By changing one letter at a time.
-        all_combo_dict = defaultdict(list)
+        d = defaultdict(list)
         for word in wordList:
             for i in range(L):
                 # Key is the generic word
                 # Value is a list of words which have the same intermediate generic word.
-                all_combo_dict[word[:i] + "*" + word[i+1:]].append(word)
+                d[word[:i] + "*" + word[i+1:]].append(word)
 
 
-        # Queue for BFS
         queue = collections.deque([(beginWord, 1)])
         # Visited to make sure we don't repeat processing same word.
         visited = {beginWord: True}
@@ -35,7 +28,7 @@ class Solution(object):
                 intermediate_word = current_word[:i] + "*" + current_word[i+1:]
 
                 # Next states are all the words which share the same intermediate state.
-                for word in all_combo_dict[intermediate_word]:
+                for word in d[intermediate_word]:
                     # If at any point if we find what we are looking for
                     # i.e. the end word - we can return with the answer.
                     if word == endWord:
@@ -44,5 +37,22 @@ class Solution(object):
                     if word not in visited:
                         visited[word] = True
                         queue.append((word, level + 1))
-                all_combo_dict[intermediate_word] = []
+                d[intermediate_word] = []
         return 0
+    
+'''
+queue = [(beginWord, 1)]
+    visited = set()
+    
+    while queue:
+        word, dist = queue.pop(0)
+        if word == endWord:
+            return dist
+        for i in range(len(word)):
+            for j in 'abcdefghijklmnopqrstuvwxyz':
+                tmp = word[:i] + j + word[i+1:]
+                if tmp not in visited and tmp in wordList:
+                    queue.append((tmp, dist+1))
+                    visited.add(tmp)
+    return 0
+'''
