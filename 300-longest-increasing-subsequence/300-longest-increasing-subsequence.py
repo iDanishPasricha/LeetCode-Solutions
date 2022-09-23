@@ -1,31 +1,9 @@
-import math
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        curr_array=[];
-        curr_array.append(nums[0]);
+        dp = [1]*len(nums)
         
-        def binarysearch(nums,target):
-            start=0;
-            end=len(nums)-1;
-            ans=float(inf)
-            while(start<=end):
-                mid=(start+end)//2;
-                if target<=nums[mid]:
-                    ans=min(ans,mid)
-                    end=mid-1
-                else:
-                    start=mid+1;
-            if ans!=float(inf):return ans
-            else:return -1
-            
-            
-            
-            
-        for i in range(len(nums)):
-            
-            nearest_element = binarysearch(curr_array,nums[i]);
-            if nearest_element==-1:
-                curr_array.append(nums[i])
-            else:
-                curr_array[nearest_element]=nums[i]
-        return len(curr_array)
+        for i in range(len(nums)-1,-1,-1):
+            for j in range(i+1,len(nums)):
+                if nums[j]>nums[i]:
+                    dp[i] = max(dp[i] , 1+dp[j])
+        return max(dp)
